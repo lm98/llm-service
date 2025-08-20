@@ -14,6 +14,18 @@ application {
     mainClass = "io.ktor.server.netty.EngineMain"
 }
 
+
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/lm98/whdt") // or the correct GitHub repo
+        credentials {
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("GPR_USER")
+            password = project.findProperty("gpr.key") as String? ?: System.getenv("GPR_TOKEN")
+        }
+    }
+    mavenCentral()
+}
+
 dependencies {
     implementation("io.github.cdimascio:dotenv-kotlin:6.5.1")
 
@@ -28,11 +40,15 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 
     // WHDT DEPENDENCIES
-    implementation("com.github.whdt:whdt-core:0.4.0")
+    implementation("io.github.lm98:whdt-core:0.4.0")
 
     // GENAI DEPENDENCIES
-    implementation("com.google.genai:genai-java:1.11.0")
+    implementation("com.google.genai:google-genai:1.13.0")
+
+    // MQTT
+    implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5")
 }
+
 
 kotlin {
     jvmToolchain(23)
