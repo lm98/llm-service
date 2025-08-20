@@ -40,7 +40,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 
     // WHDT DEPENDENCIES
-    implementation("io.github.lm98:whdt-core:0.4.0")
+    implementation("io.github.lm98:whdt-core:0.4.1")
 
     // GENAI DEPENDENCIES
     implementation("com.google.genai:google-genai:1.13.0")
